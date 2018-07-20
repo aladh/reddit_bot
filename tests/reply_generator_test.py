@@ -1,4 +1,4 @@
-from .reply_generator import ReplyGenerator
+from src.reply_generator import ReplyGenerator
 
 quotes = [
     'hello'
