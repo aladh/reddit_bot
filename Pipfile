@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 praw = {editable = true, git = "https://github.com/praw-dev/praw"}
+pyyaml = "*"
 
 [dev-packages]
 pytest = "*"
