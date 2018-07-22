@@ -3,15 +3,15 @@ import os
 import praw
 import random
 from datetime import datetime
-# noinspection PyUnresolvedReferences
 from reply_chooser import ReplyChooser
+from lambda_quotes import LambdaQuotes
 
 with open(f'{os.path.dirname(__file__)}/quotes.yml') as f:
-    yaml_string = f.read()
+    yaml_string_quotes = f.read()
 
-string_quotes = yaml.load(yaml_string)
+string_quotes = yaml.load(yaml_string_quotes)
 
-quotes = string_quotes
+quotes = string_quotes + LambdaQuotes.all()
 
 reddit = praw.Reddit('tyrion')
 
