@@ -27,14 +27,14 @@ print('Listening for triggers...')
 for comment in reddit.subreddit(subreddit).stream.comments(skip_existing=True):
     try:
         if trigger in comment.body.lower():
+            print(f'{datetime.utcnow()} - u/{comment.author.name} says: "{comment.body}"')
             reply = reply_chooser.reply(comment)
 
             if word_filter.is_blocked(reply):
                 print(f'{datetime.utcnow()} - WordFilter blocked reply: {reply}')
                 continue
 
-            print(f'{datetime.utcnow()} - u/{comment.author.name} says: "{comment.body}". Replying with: "{reply}"')
-
+            print(f'{datetime.utcnow()} - Replying with: "{reply}"')
             comment.reply(reply)
     except Exception as e:
         print(f'{datetime.utcnow()} - Exception: ', e)
