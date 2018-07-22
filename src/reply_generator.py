@@ -1,4 +1,4 @@
-class ReplyGenerator:
+class ReplyChooser:
     def __init__(self, random, quotes):
         self.random = random
         self.quotes = quotes

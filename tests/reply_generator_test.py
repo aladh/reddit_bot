@@ -1,4 +1,4 @@
-from src.reply_generator import ReplyGenerator
+from src.reply_generator import ReplyChooser
 
 quotes = [
     'hello',
@@ -20,5 +20,5 @@ class Random:
 
 
 def test_selects_string_quote_using_injected_random():
-    reply = ReplyGenerator(Random(0), quotes).reply(None)
+    reply = ReplyChooser(Random(0), quotes).reply(None)
     assert reply == quotes[0]
