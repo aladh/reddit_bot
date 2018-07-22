@@ -19,6 +19,8 @@ class Random:
         return array[self.choice_index]
 
 
-def test_selects_string_quote_using_injected_random():
-    reply = ReplyChooser(Random(0), quotes).reply(None)
-    assert reply == quotes[0]
+def test_selects_quote_using_injected_random():
+    reply1 = ReplyChooser(Random(0), quotes).reply(None)
+    reply2 = ReplyChooser(Random(1), quotes).reply(None)
+    assert reply1 == quotes[0]
+    assert reply2 == quotes[1]
