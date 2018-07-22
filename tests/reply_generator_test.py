@@ -20,5 +20,5 @@ class Random:
 
 
 def test_selects_string_quote_using_injected_random():
-    reply = ReplyGenerator(Random(0), quotes).random_reply(None)
+    reply = ReplyGenerator(Random(0), quotes).reply(None)
     assert reply == quotes[0]

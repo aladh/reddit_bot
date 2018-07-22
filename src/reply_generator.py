@@ -4,6 +4,6 @@ class ReplyGenerator:
         self.quotes = quotes
         random.seed()
 
-    def random_reply(self, comment):
+    def reply(self, comment):
         quote = self.random.choice(self.quotes)
         return quote(comment) if callable(quote) else quote
