@@ -4,7 +4,7 @@ class WordFilter:
 
     def is_blocked(self, text):
         for word in self.blocked_words:
-            if word in text:
+            if word in text.lower():
                 return True
 
         return False
