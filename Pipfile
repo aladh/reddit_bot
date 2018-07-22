@@ -4,6 +4,7 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
+praw = {editable = true, git = "https://github.com/praw-dev/praw"}
 
 [dev-packages]
 pytest = "*"
