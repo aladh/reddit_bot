@@ -1,4 +1,3 @@
-import yaml
 import os
 import praw
 import random
@@ -7,10 +6,10 @@ from reply_chooser import ReplyChooser
 from lambda_quotes import LambdaQuotes
 from word_filter import WordFilter
 
-with open(f'{os.path.dirname(__file__)}/quotes.yml') as f:
-    yaml_string_quotes = f.read()
+with open(f'{os.path.dirname(__file__)}/quotes.txt') as f:
+    quotes_file = f.read()
 
-string_quotes = yaml.load(yaml_string_quotes)
+string_quotes = quotes_file.split(sep='\n')
 
 quotes = string_quotes + LambdaQuotes.all()
 
