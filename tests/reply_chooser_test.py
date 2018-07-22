@@ -1,4 +1,4 @@
-from src.reply_generator import ReplyChooser
+from src.reply_chooser import ReplyChooser
 
 quotes = [
     'hello',
