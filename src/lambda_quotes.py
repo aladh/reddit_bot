@@ -17,5 +17,11 @@ class LambdaQuotes:
             lambda comment: f"Cut off u/{comment.author.name}'s manhood and feed it to the goats!",
             lambda comment: f'Get u/{comment.author.name} out of my sight! Throw them in one of the black cells!',
             lambda comment: f"It's hard to argue with u/{comment.author.name}'s assessment.",
-            lambda comment: f"You have to admire u/{comment.author.name}'s imagination."
+            lambda comment: f"You have to admire u/{comment.author.name}'s imagination.",
+            lambda comment: f"You have to admire u/{comment.author.name}'s imagination.",
+            lambda comment: f"I was the smartest person I knew, certainly I had the wherewithal to unravel the "
+                            f"mysteries that lay at the heart of u/{comment.author.name}.",
+            lambda comment: f'You once said that without me, the city would have faced certain defeat. You said the '
+                            f'histories would never mention me, but you would not forget. Have you forgotten, '
+                            f'u/{comment.author.name}?'
         ]
