@@ -38,7 +38,9 @@ for comment in reddit.subreddit(subreddit).stream.comments(skip_existing=True):
 
                 print(f'{datetime.utcnow()} - Replying with: "{reply}"')
                 print()
+
                 comment.reply(reply)
+                break  # TODO: test this
     except Exception as e:
         print(f'{datetime.utcnow()} - Exception: ', e)
         continue
