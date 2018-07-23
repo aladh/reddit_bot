@@ -13,5 +13,9 @@ class LambdaQuotes:
             lambda comment: f'Let me give you some advice, u/{comment.author.name}: never forget what you are. The '
                             f'rest of the world will not. Wear it like armor, and it can never be used to hurt you.',
             lambda comment: f'Oh! "{sorted(comment.body.split(), key=len, reverse=True)[0]}". Fancy word for a '
-                            f'sellsword. '
+                            f'sellsword.',
+            lambda comment: f"Cut off u/{comment.author.name}'s manhood and feed it to the goats!",
+            lambda comment: f'Get u/{comment.author.name} out of my sight! Throw them in one of the black cells!',
+            lambda comment: f"It's hard to argue with u/{comment.author.name}'s assessment.",
+            lambda comment: f"You have to admire u/{comment.author.name}'s imagination."
         ]

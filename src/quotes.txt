@@ -21,16 +21,12 @@ Surely there are ways to have me killed that would be less detrimental to the wa
 You're going to be bigger than the Hound...but much better looking!
 I don't like threats.
 Threaten me again and I'll have you thrown into the sea!
-Cut off his manhood and feed it to the goats!' # interpolate username
 How long have you been spying for my sister?
 I don't like your beard...
-Get him out of my sight! Throw him in one of the black cells!' # interpolate username
 I've decided I don't like riddles.
 Tell me, did Cersei have you knighted before or after she took you into her bed?
 I want to know what Cersei is doing, where she goes, who she sees, what they talk of, everything and you will tell me.
 Let us drink to our understanding.
-It's hard to argue with his assessment." # interpolate username
-You have to admire his imagination.' # interpolate username
 Oh, you blind, bloody fool!
 They're starving, you fool! All because of the war you started!
 I'd say you possess above average intelligence...
@@ -81,13 +77,13 @@ It’s even better luck to suck a dwarf’s cock.
 What sort of imbecile arms an assassin with his own blade?
 You can’t fuck your way out of everything.
 Not this time. We’ll be staying at the finest castles and inns. No one turns away a Lannister.
-I remember reading an old sailor’s proverb, "Piss on wildfire and your cock burns off.
+I remember reading an old sailor's proverb. Piss on wildfire and your cock burns off.
 If you’re going to be a cripple, it’s better to be a rich cripple.
 Everything’s better with some wine in the belly.
 Turns out, far too much has been written about great men and not nearly enough about morons. Doesn’t seem right.
-A mind needs books as a sword needs a whetstone, if it is to keep its edge.' # trigger: read + books?
+A mind needs books as a sword needs a whetstone, if it is to keep its edge.
 That’s what I do: I drink and I know things.
 Death is so final. Whereas life, ah, life is full of possibilities.
 Look at the fun we're having!
 I just want to stand on top of the Wall and piss off the edge of the world.
-A wise man said: never believe a thing simply because you want to believe it.
+A wise man once said that you should never believe a thing simply because you want to believe it.
