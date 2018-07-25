@@ -4,8 +4,7 @@ import random
 from datetime import datetime
 from reply_chooser import ReplyChooser
 from lambda_quotes import LambdaQuotes
-from word_filter import WordFilter
-from trigger_recognizer import TriggerRecognizer
+from word_matcher import WordMatcher
 
 with open(f'{os.path.dirname(__file__)}/quotes.txt') as f:
     quotes_file = f.read()
@@ -20,14 +19,13 @@ subreddit = 'freebots'
 triggers = ['imp', 'dwarf', 'halfman', 'half-man', 'half man', 'demon', 'monkey']
 
 reply_chooser = ReplyChooser(random, quotes)
-word_filter = WordFilter(triggers)
-trigger_recognizer = TriggerRecognizer(triggers)
+word_matcher = WordMatcher(triggers)
 
 print('Listening for triggers...')
 
 for comment in reddit.subreddit(subreddit).stream.comments(skip_existing=True):
     try:
-        trigger = trigger_recognizer.has_trigger(comment.body)
+        trigger = word_matcher.is_present(comment.body)
 
         if not trigger:
             continue
@@ -37,8 +35,8 @@ for comment in reddit.subreddit(subreddit).stream.comments(skip_existing=True):
 
         reply = reply_chooser.reply(comment)
 
-        if word_filter.is_blocked(reply):
-            print(f'{datetime.utcnow()} - WordFilter blocked reply: {reply}')
+        if word_matcher.is_present(reply):
+            print(f'{datetime.utcnow()} - Blocked reply with trigger word: "{reply}"')
             continue
 
         print(f'{datetime.utcnow()} - Replying with: "{reply}"')
