@@ -11,3 +11,7 @@ def test_returns_true_if_trigger_present():
 def test_only_matches_whole_words():
     assert t.has_trigger('foot') is None
     assert t.has_trigger('rebar') is None
+
+
+def test_handles_different_case():
+    assert t.has_trigger('Foo') == 'foo'
