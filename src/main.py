@@ -30,14 +30,13 @@ for comment in reddit.subreddit(subreddit).stream.comments(skip_existing=True):
         if not trigger:
             continue
 
+        if comment.author == reddit.user.me():
+            continue
+
         print(f'{datetime.utcnow()} - Triggered by: "{trigger}"')
         print(f'{datetime.utcnow()} - u/{comment.author.name} says: "{comment.body}"')
 
         reply = reply_chooser.reply(comment)
-
-        if word_matcher.is_present(reply):
-            print(f'{datetime.utcnow()} - Blocked reply with trigger word: "{reply}"')
-            continue
 
         print(f'{datetime.utcnow()} - Replying with: "{reply}"')
         print()
