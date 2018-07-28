@@ -1,4 +1,4 @@
-from src.word_matcher import WordMatcher
+from src.util.word_matcher import WordMatcher
 
 t = WordMatcher(['foo', 'bar'])
 

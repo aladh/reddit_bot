@@ -5,9 +5,9 @@ from datetime import datetime
 # noinspection PyUnresolvedReferences
 from lambda_quotes import LambdaQuotes
 # noinspection PyUnresolvedReferences
-from reply_chooser import ReplyChooser
+from util.reply_chooser import ReplyChooser
 # noinspection PyUnresolvedReferences
-from word_matcher import WordMatcher
+from util.word_matcher import WordMatcher
 
 with open(f'{os.path.dirname(__file__)}/quotes.txt') as f:
     quotes_file = f.read()
@@ -18,7 +18,7 @@ quotes = string_quotes + LambdaQuotes.all()
 
 reddit = praw.Reddit('tyrion')
 
-subreddit = 'freefolk'
+subreddit = 'freebots'
 triggers = ['imp', 'dwarf', 'halfman', 'half-man', 'half man', 'tyrion bot', 'tyrion-bot']
 
 reply_chooser = ReplyChooser(random, quotes)
