@@ -3,13 +3,13 @@ import praw
 import random
 from datetime import datetime
 # noinspection PyUnresolvedReferences
-from lambda_quotes import LambdaQuotes
+from quotes.lambda_quotes import LambdaQuotes
 # noinspection PyUnresolvedReferences
 from util.reply_chooser import ReplyChooser
 # noinspection PyUnresolvedReferences
 from util.word_matcher import WordMatcher
 
-with open(f'{os.path.dirname(__file__)}/quotes.txt') as f:
+with open(f'{os.path.dirname(__file__)}/quotes/quotes.txt') as f:
     quotes_file = f.read()
 
 string_quotes = quotes_file.split(sep='\n')
