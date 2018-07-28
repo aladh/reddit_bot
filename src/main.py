@@ -15,8 +15,8 @@ quotes = string_quotes + LambdaQuotes.all()
 
 reddit = praw.Reddit('tyrion')
 
-subreddit = 'freebots'
-triggers = ['imp', 'dwarf', 'halfman', 'half-man', 'half man', 'demon', 'monkey']
+subreddit = 'freefolk'
+triggers = ['imp', 'dwarf', 'halfman', 'half-man', 'half man', 'tyrion bot', 'tyrion-bot']
 
 reply_chooser = ReplyChooser(random, quotes)
 word_matcher = WordMatcher(triggers)
