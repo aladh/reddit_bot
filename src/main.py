@@ -2,8 +2,11 @@ import os
 import praw
 import random
 from datetime import datetime
-from reply_chooser import ReplyChooser
+# noinspection PyUnresolvedReferences
 from lambda_quotes import LambdaQuotes
+# noinspection PyUnresolvedReferences
+from reply_chooser import ReplyChooser
+# noinspection PyUnresolvedReferences
 from word_matcher import WordMatcher
 
 with open(f'{os.path.dirname(__file__)}/quotes.txt') as f:
