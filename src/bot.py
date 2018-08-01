@@ -35,7 +35,7 @@ class Bot:
         return self
 
     def run(self):
-        print('Listening for triggers...')
+        print(f'Listening for triggers in r/{self._listener.subreddit}...')
         reddit = praw.Reddit(self.account)
 
         for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
