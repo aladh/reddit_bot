@@ -1,6 +1,6 @@
 import random
-from datetime import datetime
 import praw
+import logging
 # noinspection PyUnresolvedReferences
 from util.word_matcher import WordMatcher
 # noinspection PyUnresolvedReferences
@@ -35,7 +35,7 @@ class Bot:
         return self
 
     def run(self):
-        print(f'Listening for triggers in r/{self._listener.subreddit}...')
+        logging.info(f'Listening for triggers in r/{self._listener.subreddit}...\n')
         reddit = praw.Reddit(self.account)
 
         for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
@@ -52,18 +52,17 @@ class Bot:
                     if comment.author == reddit.user.me():
                         continue
 
-                    print(f'{datetime.utcnow()} {"TEST" if replier.test else ""}- Triggered by: "{trigger}"')
-                    print(f'{datetime.utcnow()} - u/{comment.author.name} says: "{comment.body}"')
-
                     reply = reply_chooser.reply(comment)
 
-                    print(f'{datetime.utcnow()} - Replying with: "{reply}"')
-                    print()
+                    logging.info(f'{"TEST: " if replier.test else ""}Triggered by: "{trigger}"'
+                                 f'\nu/{comment.author.name} says: "{comment.body}"'
+                                 f'\nReplying with: "{reply}"'
+                                 f'\n')
 
                     if replier.test:
                         continue
 
                     comment.reply(reply)
                 except Exception as e:
-                    print(f'{datetime.utcnow()} - Exception: ', e)
+                    logging.info(f'Exception: {e}')
                     continue
