@@ -35,6 +35,13 @@ class Bot:
         return self
 
     def run(self):
+        try:
+            self._run()
+        except Exception as e:
+            logging.error(f'Stopped listening due to error: {e}')
+            raise e
+
+    def _run(self):
         logging.info(f'Listening for triggers in r/{self._listener.subreddit}...\n')
         reddit = praw.Reddit(self.account)
 
@@ -64,5 +71,5 @@ class Bot:
 
                     comment.reply(reply)
                 except Exception as e:
-                    logging.info(f'Exception: {e}')
+                    logging.error(f'Error while replying: {e}')
                     continue
