@@ -9,6 +9,7 @@ before_script:
 build-master:
   stage: build
   script:
+    - echo $PRAWINI | base64 -d > praw.ini
     - docker build --pull -t "$CI_REGISTRY_IMAGE" .
     - docker push "$CI_REGISTRY_IMAGE"
   only:
