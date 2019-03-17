@@ -1,5 +1,7 @@
 FROM python:3.7.2-alpine3.9
 
+ARG SUBREDDIT
+
 WORKDIR /usr/src/app
 
 COPY . ./
@@ -7,6 +9,6 @@ COPY . ./
 RUN pip install pipenv
 RUN pipenv install --system --deploy
 
-ENV SUBREDDIT="${SUBREDDIT}"
+ENV SUBREDDIT=$SUBREDDIT
 
 CMD ["python", "./src/main.py"]
