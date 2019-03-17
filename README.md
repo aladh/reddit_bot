@@ -1,11 +1,7 @@
 Environment variables
 
-- Runtime
+- Build time 
     
     
-    SUBREDDIT = Name of subreddit to monitor
-    
-- Build time (used in .gitlab-ci.yml)
-    
-    
-    PRAWINI = Base64 string of praw.ini file
+    PRAWINI = Base64 string of praw.ini file (.gitlab-ci.yml)
+    SUBREDDIT = Name of subreddit to monitor (Dockerfile)

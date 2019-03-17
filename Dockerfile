@@ -7,4 +7,6 @@ COPY . ./
 RUN pip install pipenv
 RUN pipenv install --system --deploy
 
+ENV SUBREDDIT=$SUBREDDIT
+
 CMD ["python", "./src/main.py"]
