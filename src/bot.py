@@ -7,10 +7,9 @@ from util.reply_chooser import ReplyChooser
 
 
 class ReplierConfig:
-    def __init__(self, triggers, replies, test):
+    def __init__(self, triggers, replies):
         self.triggers = triggers  # TODO: Allow regex
         self.replies = replies
-        self.test = test
 
 
 class ListenerConfig:
@@ -19,38 +18,31 @@ class ListenerConfig:
 
 
 class Bot:
-    _listener = None
-    _replier = None
+    listener = None
+    replier = None
 
     def __init__(self, account):
         self.account = account
 
     def listen(self, subreddit):
-        self._listener = ListenerConfig(subreddit)
+        self.listener = ListenerConfig(subreddit)
         return self
 
-    def reply(self, triggers, replies, test=False):
-        self._replier = ReplierConfig(triggers, replies, test)
+    def reply(self, triggers, replies):
+        self.replier = ReplierConfig(triggers, replies)
         return self
 
     def run(self):
         reddit = praw.Reddit(self.account)
+        word_matcher = WordMatcher(self.replier.triggers)
+        reply_chooser = ReplyChooser(random, self.replier.replies)
 
-        for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
-            word_matcher = WordMatcher(self._replier.triggers)
-            reply_chooser = ReplyChooser(random, self._replier.replies)
-
+        for comment in reddit.subreddit(self.listener.subreddit).stream.comments(skip_existing=True):
             trigger = word_matcher.is_present(comment.body)
 
-            if not trigger:
-                continue
-
-            if comment.author == reddit.user.me():
+            if not trigger or comment.author == reddit.user.me():
                 continue
 
             reply = reply_chooser.reply(comment)
-
-            if self._replier.test:
-                continue
 
             comment.reply(reply)
