@@ -1,12 +1,9 @@
 import os
-import logging
 # noinspection PyUnresolvedReferences
 from quotes.lambda_quotes import LambdaQuotes
 
 # noinspection PyUnresolvedReferences
 from bot import Bot
-
-logging.basicConfig(filename='reddit_bot.log', level=logging.INFO, format='%(asctime)s - %(message)s')
 
 with open(f'{os.path.dirname(__file__)}/quotes/quotes.txt') as f:
     quotes = f.read()

@@ -1,6 +1,5 @@
 import random
 import praw
-import logging
 # noinspection PyUnresolvedReferences
 from util.word_matcher import WordMatcher
 # noinspection PyUnresolvedReferences
@@ -38,11 +37,9 @@ class Bot:
         try:
             self._run()
         except Exception as e:
-            logging.error(f'Stopped listening due to error: {e}')
             raise e
 
     def _run(self):
-        logging.info(f'Listening for triggers in r/{self._listener.subreddit}...\n')
         reddit = praw.Reddit(self.account)
 
         for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
@@ -61,15 +58,9 @@ class Bot:
 
                     reply = reply_chooser.reply(comment)
 
-                    logging.info(f'{"TEST: " if replier.test else ""}Triggered by: "{trigger}"'
-                                 f'\nu/{comment.author.name} says: "{comment.body}"'
-                                 f'\nReplying with: "{reply}"'
-                                 f'\n')
-
                     if replier.test:
                         continue
 
                     comment.reply(reply)
                 except Exception as e:
-                    logging.error(f'Error while replying: {e}')
                     continue
