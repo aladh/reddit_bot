@@ -20,7 +20,7 @@ class ListenerConfig:
 
 class Bot:
     _listener = None
-    _repliers = []
+    _replier = None
 
     def __init__(self, account):
         self.account = account
@@ -30,28 +30,27 @@ class Bot:
         return self
 
     def reply(self, triggers, replies, test=False):
-        self._repliers.append(ReplierConfig(triggers, replies, test))
+        self._replier = ReplierConfig(triggers, replies, test)
         return self
 
     def run(self):
         reddit = praw.Reddit(self.account)
 
         for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
-            for replier in self._repliers:
-                word_matcher = WordMatcher(replier.triggers)
-                reply_chooser = ReplyChooser(random, replier.replies)
+            word_matcher = WordMatcher(self._replier.triggers)
+            reply_chooser = ReplyChooser(random, self._replier.replies)
 
-                trigger = word_matcher.is_present(comment.body)
+            trigger = word_matcher.is_present(comment.body)
 
-                if not trigger:
-                    continue
+            if not trigger:
+                continue
 
-                if comment.author == reddit.user.me():
-                    continue
+            if comment.author == reddit.user.me():
+                continue
 
-                reply = reply_chooser.reply(comment)
+            reply = reply_chooser.reply(comment)
 
-                if replier.test:
-                    continue
+            if self._replier.test:
+                continue
 
-                comment.reply(reply)
+            comment.reply(reply)
