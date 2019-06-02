@@ -23,5 +23,7 @@ class LambdaQuotes:
                             f"mysteries that lay at the heart of u/{comment.author.name}.",
             lambda comment: f'You once said that without me, the city would have faced certain defeat. You said the '
                             f'histories would never mention me, but you would not forget. Have you forgotten, '
-                            f'u/{comment.author.name}?'
+                            f'u/{comment.author.name}?',
+            lambda comment: f"You may not believe it, but I've missed you, u/{comment.author.name}. Nobody glowers "
+                            f"quite like you. "
         ]
