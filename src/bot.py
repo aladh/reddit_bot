@@ -34,12 +34,6 @@ class Bot:
         return self
 
     def run(self):
-        try:
-            self._run()
-        except Exception as e:
-            raise e
-
-    def _run(self):
         reddit = praw.Reddit(self.account)
 
         for comment in reddit.subreddit(self._listener.subreddit).stream.comments(skip_existing=True):
@@ -47,20 +41,17 @@ class Bot:
                 word_matcher = WordMatcher(replier.triggers)
                 reply_chooser = ReplyChooser(random, replier.replies)
 
-                try:
-                    trigger = word_matcher.is_present(comment.body)
+                trigger = word_matcher.is_present(comment.body)
 
-                    if not trigger:
-                        continue
-
-                    if comment.author == reddit.user.me():
-                        continue
-
-                    reply = reply_chooser.reply(comment)
-
-                    if replier.test:
-                        continue
-
-                    comment.reply(reply)
-                except Exception as e:
+                if not trigger:
                     continue
+
+                if comment.author == reddit.user.me():
+                    continue
+
+                reply = reply_chooser.reply(comment)
+
+                if replier.test:
+                    continue
+
+                comment.reply(reply)
