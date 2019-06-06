@@ -1,4 +1,5 @@
 import random
+import re
 import praw
 # noinspection PyUnresolvedReferences
 from util.word_matcher import WordMatcher
@@ -15,6 +16,16 @@ class ReplierConfig:
 class ListenerConfig:
     def __init__(self, subreddit):
         self.subreddit = subreddit
+
+
+def is_bot(user):
+    match = re.search(r'[-_]bot', user.name)
+
+    if match:
+        print(f'{datetime.utcnow()} - Skipping reply to bot: "{user.name}"')
+        print()
+
+    return match
 
 
 class Bot:
@@ -40,7 +51,7 @@ class Bot:
         for comment in reddit.subreddit(self.listener.subreddit).stream.comments(skip_existing=True):
             trigger = word_matcher.is_present(comment.body)
 
-            if not trigger or comment.author == reddit.user.me():
+            if not trigger or comment.author == reddit.user.me() or is_bot(comment.author):
                 continue
 
             reply = reply_chooser.reply(comment)
