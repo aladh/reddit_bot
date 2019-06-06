@@ -51,7 +51,7 @@ class Bot:
         for comment in reddit.subreddit(self.listener.subreddit).stream.comments(skip_existing=True):
             trigger = word_matcher.is_present(comment.body)
 
-            if not trigger or comment.author == reddit.user.me() or is_bot(comment.author):
+            if not trigger or is_bot(comment.author):
                 continue
 
             reply = reply_chooser.reply(comment)
