@@ -2,7 +2,7 @@ class LambdaQuotes:
     @staticmethod
     def all():
         return [
-            lambda comment: f'u/{comment.author.name}, the next time Ser Meryn speaks, kill him.',
+            lambda comment: f'Bronn, the next time u/{comment.author.name} speaks, kill them.',
             lambda comment: f"I'm not questioning your honour, u/{comment.author.name}...I'm denying its existence!",
             lambda comment: f'Anyone named u/{comment.author.name} must be a pervert.',
             lambda comment: f"What do you want from me, u/{comment.author.name}? Gold? Women? Golden women? Stick "
