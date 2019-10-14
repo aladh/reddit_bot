@@ -1,3 +1,5 @@
+Monitors a subreddit and replies to comments that contain one of the specified keywords
+
 Environment variables
 
 - Build time 
